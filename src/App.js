@@ -3,7 +3,7 @@ import Alert from "./MyComponents/Alert.js";
 import Navbar from "./MyComponents/Navbar.js"
 import TextForm from "./MyComponents/TextForm.js"
 import { useState } from "react";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { HashRouter, Routes, Route } from "react-router-dom";
 
 function App() {
   const [mode, setMode]=useState("light");
@@ -32,17 +32,14 @@ function App() {
   document.title = (mode==="light") ? "TextUtils - Light Mode" : "TextUtils - Dark Mode";
   return (
     <>
-    <BrowserRouter>
+    <HashRouter>
       <Navbar title="Jai Jinendra" ghar="Home" mode={mode} toggleMode={toggleMode}/>
       <Alert alert={alert} showAlert={showAlert}></Alert>
       <Routes>
         <Route path="/" element={<TextForm title="Good Morning" mode={mode} showAlert={showAlert}/>} />
         <Route path="/about" element={<About mode={mode}/>} />
       </Routes>
-    </BrowserRouter>
-    {/* <Navbar title="Jai Jinendra" ghar="Home" mode={mode} toggleMode={toggleMode}/>
-    <Alert alert={alert} showAlert={showAlert}></Alert>
-    <TextForm title="Good Morning" mode={mode} showAlert={showAlert}/> */}
+    </HashRouter>
     </>
   );
 }
